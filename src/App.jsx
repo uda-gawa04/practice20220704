@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ColorfulMessage from "./components/ColorfulMessage";
 
 const App = () => {
   console.log("さいしょ");
   const [num, setNum] = useState(0);
-  const [facdShowFlag, setFaceShowFlag] = useState(true);
+  const [facdShowFlag, setFaceShowFlag] = useState(false);
 
   const onClickBCountUp = () => {
     setNum(num + 1);
@@ -12,6 +12,16 @@ const App = () => {
   const onClickSwichShowFlag = () => {
     setFaceShowFlag(!facdShowFlag);
   };
+
+  useEffect(() => {
+    if (num > 0) {
+      if (num % 3 === 0) {
+        facdShowFlag || setFaceShowFlag(true);
+      } else {
+        facdShowFlag && setFaceShowFlag(false);
+      }
+    }
+  }, [num]);
 
   return (
     <>
@@ -22,6 +32,7 @@ const App = () => {
       <br />
       <button onClick={onClickSwichShowFlag}>on/off</button>
       <p>{num}</p>
+      {/* 左側がtrueの時だけ右側を表示 */}
       {facdShowFlag && <p>(^^)/</p>}
     </>
   );
