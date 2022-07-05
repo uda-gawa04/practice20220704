@@ -1,6 +1,6 @@
 import React from "react";
 
-const ColofulMessage = (props) => {
+export const ColorfulMessage = (props) => {
   const { color, children } = props;
   const contentStyle = {
     // オブジェクトがプロパティ名と当てはめる変数名が同じときは、：以降の変数名がなくてもOK
@@ -9,5 +9,3 @@ const ColofulMessage = (props) => {
   };
   return <p style={contentStyle}>{children}</p>;
 };
-
-export default ColofulMessage;
